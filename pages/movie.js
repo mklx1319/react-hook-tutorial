@@ -6,39 +6,35 @@ import Link from 'next/link'
 import { StoreConsumer, dispatcher } from '../component/store'
 
 const Movie = ({ shows }) => {
-  useEffect(() => {
-    dispatch(dispatcher.setCountView)
-  }, [])
   return (
-    <StoreConsumer>
-      {({ state, dispatch }) => (
-        <div>
-          <Link href="/">
-            <a>Index</a>
-          </Link>
-          <Link href="/movie">
-            <a>Movie</a>
-          </Link>
-          <p>Entrance Count: {state.countView}</p>
-
-          {shows.map(({ show }) => (
-            <div
-              key={show.id}
-              style={{ border: '1px solid #000000', width: '300px', display: 'inline-block' }}
-            >
-              <p>{show.name}</p>
-              <p>{show.type}</p>
-              <p>{show.language}</p>
-              <ul>
-                {show.genres.map((item) => (
-                  <li key={show.id + item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <div>
+      <Link href="/">
+        <a>Index</a>
+      </Link>
+      <Link href="/movie">
+        <a>Movie</a>
+      </Link>
+      <hr />
+      {shows.map(({ show }) => (
+        <div
+          key={show.id}
+          style={{
+            border: '1px solid #000000',
+            width: '300px',
+            height: '300px',
+          }}
+        >
+          <p>{show.name}</p>
+          <p>{show.type}</p>
+          <p>{show.language}</p>
+          <ul>
+            {show.genres.map((item) => (
+              <li key={show.id + item}>{item}</li>
+            ))}
+          </ul>
         </div>
-      )}
-    </StoreConsumer>
+      ))}
+    </div>
   )
 }
 
