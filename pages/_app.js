@@ -9,9 +9,9 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <Container>
-        {/* <StoreProvider> */}
-        <Component {...pageProps} />
-        {/* </StoreProvider> */}
+        <StoreProvider>
+          <Component {...pageProps} />
+        </StoreProvider>
       </Container>
     )
   }

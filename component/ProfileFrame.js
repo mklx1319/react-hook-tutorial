@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 
-import { ProfileConsumer } from './controller'
+import { ProfileContext } from './controller'
+import { StoreContext, dispatcher } from './store'
 
 const Main = styled.div`
   width: 300px;
@@ -16,16 +17,25 @@ const Frame = styled.div`
   padding: 0.25em 1em;
 `
 
-const ProfileFrame = (props) => (
-  <Main>
-    <Frame>
-      <p>Name : {props.state.name}</p>
-      <p>age : {props.state.age}</p>
-      <p>sex : {props.state.sex}</p>
-      <p>height : {props.state.height}</p>
-      <p>weight : {props.state.weight}</p>
-    </Frame>
-  </Main>
-)
+const ProfileFrame = () => {
+  const { state } = useContext(ProfileContext)
+  const { state: store, dispatch } = useContext(StoreContext)
+  useEffect(() => {
+    dispatch(dispatcher.setCountView)
+  }, [])
+  return (
+    <Main>
+      <p>counter view: {store.countView}</p>
+
+      <Frame>
+        <p>Name : {state.name}</p>
+        <p>age : {state.age}</p>
+        <p>sex : {state.sex}</p>
+        <p>height : {state.height}</p>
+        <p>weight : {state.weight}</p>
+      </Frame>
+    </Main>
+  )
+}
 
 export default ProfileFrame

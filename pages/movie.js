@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import fetch from 'isomorphic-unfetch'
 
 import Link from 'next/link'
 
-import { StoreConsumer, dispatcher } from '../component/store'
+import { StoreContext, dispatcher } from '../component/store'
 
 const Movie = ({ shows }) => {
+  const { state: store, dispatch } = useContext(StoreContext)
+  useEffect(() => {
+    dispatch(dispatcher.setCountView)
+  }, [])
   return (
     <div>
       <Link href="/">
@@ -15,6 +19,8 @@ const Movie = ({ shows }) => {
         <a>Movie</a>
       </Link>
       <hr />
+      <p>counter view: {store.countView}</p>
+      <p />
       {shows.map(({ show }) => (
         <div
           key={show.id}

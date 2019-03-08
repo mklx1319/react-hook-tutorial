@@ -1,8 +1,6 @@
 import { useState, createContext } from 'react'
 
 const ProfileContext = createContext()
-const ProfileProvider = ProfileContext.Provider
-const ProfileConsumer = ProfileContext.Consumer
 
 const useStore = () => {
   const store = {
@@ -33,4 +31,4 @@ const useStore = () => {
   return { state, changeSex, randomWeightHeight }
 }
 
-export { useStore, ProfileProvider, ProfileConsumer }
+export { useStore, ProfileContext }

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
-import { ProfileConsumer } from './controller'
+import { ProfileContext } from './controller'
 
 const Submit = styled.button`
   background: transparent;
@@ -12,14 +12,18 @@ const Submit = styled.button`
   display: inline-block;
 `
 
-const ButtonRow = (props) => (
-  <div>
-    <Submit onClick={props.changeSex}>
-      change <br /> sex
-    </Submit>
-    <Submit onClick={() => props.randomWeightHeight('height')}>random Height </Submit>
-    <Submit onClick={() => props.randomWeightHeight('weight')}>random Weight </Submit>
-  </div>
-)
+const ButtonRow = () => {
+  const { changeSex, randomWeightHeight } = useContext(ProfileContext)
+
+  return (
+    <div>
+      <Submit onClick={changeSex}>
+        change <br /> sex
+      </Submit>
+      <Submit onClick={() => randomWeightHeight('height')}>random Height </Submit>
+      <Submit onClick={() => randomWeightHeight('weight')}>random Weight </Submit>
+    </div>
+  )
+}
 
 export default ButtonRow
