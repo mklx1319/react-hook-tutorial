@@ -15,11 +15,13 @@ const index = () => {
         <Link href="/">
           <a>Index</a>
         </Link>
+        /
         <Link href="/movie">
           <a>Movie</a>
         </Link>
-        <ButtonRow />
+        <hr />
         <ProfileFrame />
+        <ButtonRow />
       </div>
     </ProfileContext.Provider>
   )

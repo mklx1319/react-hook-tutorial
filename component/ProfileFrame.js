@@ -25,8 +25,7 @@ const ProfileFrame = () => {
   }, [])
   return (
     <Main>
-      <p>counter view: {store.countView}</p>
-
+      <p>counter click: {store.countView}</p>
       <Frame>
         <p>Name : {state.name}</p>
         <p>age : {state.age}</p>

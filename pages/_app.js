@@ -1,4 +1,4 @@
-import App, { Container } from 'next/app'
+import App from 'next/app'
 
 import React from 'react'
 
@@ -8,11 +8,9 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
     return (
-      <Container>
-        <StoreProvider>
-          <Component {...pageProps} />
-        </StoreProvider>
-      </Container>
+      <StoreProvider>
+        <Component {...pageProps} />
+      </StoreProvider>
     )
   }
 }
